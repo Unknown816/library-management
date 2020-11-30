@@ -8,10 +8,9 @@ import java.util.Date;
 @Table(name = "book")
 @Data
 @Entity
-@SequenceGenerator(name="SeqGen2",sequenceName="book_sequence")
 public class BookEntity {
 
-    @GeneratedValue(generator="SeqGen2")
+    @GeneratedValue
     @Id
     private Long id;
 
@@ -22,4 +21,12 @@ public class BookEntity {
     private String barcode;
     private String publisher;
     private Date publishDate;
+
+    @ManyToOne
+    FileEntity file;
+
+    public String getFileBase64() {
+        if (file == null) return "";
+        return String.format("data:%s;base64,%s", file.contentType, file.content);
+    }
 }

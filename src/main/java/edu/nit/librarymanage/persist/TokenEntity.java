@@ -6,22 +6,20 @@ import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.*;
 import java.util.Date;
 
-@Table(name = "users")
+@Table(name = "token")
 @Data
 @Entity
-public class UserEntity {
+public class TokenEntity {
 
     @GeneratedValue
     @Id
     private Long id;
+    @Column(length = 32)
+    String token;
 
-    @Column(length=32)
-    private String name;
-
-    @Column(length=32)
-    private String password;
+    Long userid;
 
     @CreatedDate
-    private Date createDate;
+    Date createTime;
 
 }

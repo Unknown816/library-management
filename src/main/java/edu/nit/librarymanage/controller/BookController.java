@@ -5,6 +5,7 @@ import edu.nit.librarymanage.base.PageResult;
 import edu.nit.librarymanage.persist.BookEntity;
 import edu.nit.librarymanage.persist.BookRepository;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,8 @@ public class BookController {
 
     @GetMapping
     public PageResult<BookEntity> listBook(BookEntity example, PageRequest pageable) {
-        Example<BookEntity> of = Example.of(example);
+        ExampleMatcher exampleMatcher = ExampleMatcher.matching().withIgnoreNullValues().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
+        Example<BookEntity> of = Example.of(example, exampleMatcher);
         Page<BookEntity> all = bookRepository.findAll(of, pageable.toPageable());
         return PageResult.of(all.toList(), all.getTotalElements());
     }
