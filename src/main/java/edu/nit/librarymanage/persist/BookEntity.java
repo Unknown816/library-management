@@ -18,9 +18,10 @@ public class BookEntity {
     private String name;
     private String authors;
     private Category category;
-    private String barcode;
     private String publisher;
     private Date publishDate;
+    private Long pages;
+    private Integer click;
 
     @ManyToOne
     FileEntity file;
