@@ -17,7 +17,7 @@ public class BookEntity {
     @Column(length = 32)
     private String name;
     private String authors;
-    private Category category;
+    private String category;
     private String publisher;
     private Date publishDate;
     private Long pages;

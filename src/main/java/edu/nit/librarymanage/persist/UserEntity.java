@@ -15,11 +15,16 @@ public class UserEntity {
     @Id
     private Long id;
 
-    @Column(length=32)
+    @Column(length = 32)
     private String name;
 
-    @Column(length=32)
+    @Column(length = 32)
     private String password;
+
+    @Column(length = 32)
+    private String sex;
+
+    private String qx;
 
     @CreatedDate
     private Date createDate;
