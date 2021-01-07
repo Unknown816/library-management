@@ -29,4 +29,12 @@ public class UserEntity {
     @CreatedDate
     private Date createDate;
 
+    @ManyToOne
+    FaceEntity face;
+
+    public String getFileBase64() {
+        if (face == null) return "";
+        return String.format("data:%s;base64,%s", face.contentType, face.content);
+    }
+
 }

@@ -21,6 +21,7 @@ public class BookEntity {
     private String publisher;
     private Date publishDate;
     private Long pages;
+    private String brifContent;
     private Integer click;
 
     @ManyToOne
