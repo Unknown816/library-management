@@ -32,6 +32,11 @@ public class UserEntity {
     @ManyToOne
     FaceEntity face;
 
+    @OneToOne
+    BookShelfEntity bookShelf;
+
+    //private Long bookShelfId;
+
     public String getFileBase64() {
         if (face == null) return "";
         return String.format("data:%s;base64,%s", face.contentType, face.content);

@@ -28,19 +28,19 @@ public class TalkController {
     }
 
     @GetMapping("{id}")
-    public TalkEntity findBook(@PathVariable Long id) {
+    public TalkEntity findTalk(@PathVariable Long id) {
         return talkRepository.findById(id).orElse(null);
     }
 
     @PostMapping
-    public void addBook(
+    public void addTalk(
             @RequestBody TalkEntity entity
     ) {
         talkRepository.save(entity);
     }
 
     @DeleteMapping("{id}")
-    public void deleteBook(@PathVariable Long id) {
+    public void deleteTalk(@PathVariable Long id) {
         talkRepository.deleteById(id);
     }
 

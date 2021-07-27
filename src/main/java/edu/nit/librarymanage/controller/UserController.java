@@ -30,11 +30,24 @@ public class UserController {
         String password;
     }
 
+    @Data
+    public static class RegistForm{
+        String name;
+        String password;
+    }
+
     @PostMapping("login")
     public TokenEntity login(
             @RequestBody LoginForm loginForm
     ){
         return authService.login(loginForm.name,loginForm.password);
+    }
+
+    @PostMapping("register")
+    public void register(
+            @RequestBody RegistForm registForm
+    ){
+        authService.register(registForm.name,registForm.password);
     }
 
     @GetMapping
