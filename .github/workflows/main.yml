@@ -38,7 +38,7 @@ jobs:
         uses: garygrossgarten/github-action-scp@release
         with:
           source: target/library-manage-0.0.1-SNAPSHOT.jar
-          target: /root/tmp/library-manage.jar
+          target: /tmp/library-manage.jar
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
@@ -47,7 +47,7 @@ jobs:
         uses: fifsky/ssh-action@master
         with:
           command: | # 命令中的 & 表示在后台运行进程
-            cd /root/tmp/ && java -jar library-manage.jar &
+            cd /tmp/ && java -jar library-manage.jar &
           host: ${{ secrets.HOST }}
           user: ${{ secrets.SSH_USER }}
           pass: ${{ secrets.SSH_PASSWORD }}
