@@ -38,7 +38,7 @@ jobs:
         uses: garygrossgarten/github-action-scp@release
         with:
           local: target/library-manage-0.0.1-SNAPSHOT.jar
-          remote: /tmp/library-manage.jar
+          remote: /root/app/library-manage.jar
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
@@ -46,9 +46,7 @@ jobs:
         if: always()
         uses: fifsky/ssh-action@master
         with:
-          command: | # 命令中的 & 表示在后台运行进程
-            cd /tmp/ && java -jar library-manage.jar &
+          command: cd /root/app && docker-compose restart app
           host: ${{ secrets.HOST }}
           user: ${{ secrets.SSH_USER }}
           pass: ${{ secrets.SSH_PASSWORD }}
-          args: "-tt"
